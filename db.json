@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Thunder Cricket Academy",
+    "facility_type": "Cricket",
+    "location": "Mirpur, Dhaka",
+    "price_per_hour": 1500,
+    "capacity": 22,
+    "available_slots": ["08:00-09:00", "10:00-11:00", "15:00-16:00", "18:00-19:00"],
+    "description": "Thunder Cricket Academy is one of Dhaka's most prestigious cricket training grounds, located in the heart of Mirpur. The facility features a full-sized professional pitch with genuine turf, 6 practice nets with bowling machines, LED floodlights for night sessions, and fully equipped changing rooms with showers. Whether you are preparing for a competitive tournament or a casual weekend match, our ground offers everything a serious cricketer needs. Coaching staff are available on request, and the venue can host up to 22 players simultaneously.",
+    "image": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&auto=format&fit=crop",
+    "owner_email": "thunder.cricket@gmail.com",
+    "booking_count": 142
+  },
+  {
+    "name": "Green Field Cricket Hub",
+    "facility_type": "Cricket",
+    "location": "Uttara, Dhaka",
+    "price_per_hour": 1200,
+    "capacity": 22,
+    "available_slots": ["07:00-08:00", "09:00-10:00", "16:00-17:00"],
+    "description": "Green Field Cricket Hub in Uttara offers a well-maintained synthetic turf ground perfect for club matches, school tournaments, and training sessions. The facility includes a proper scoreboard, boundary ropes, sight screens, and a comfortable rest area for players. Our trained ground staff ensures the pitch is always in top condition. We welcome teams of all skill levels and offer flexible booking packages for regular users. Monthly membership plans are also available at discounted rates for frequent bookings.",
+    "image": "https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=800&auto=format&fit=crop",
+    "owner_email": "greenfield.hub@gmail.com",
+    "booking_count": 98
+  },
+  {
+    "name": "Premier Football Arena",
+    "facility_type": "Football",
+    "location": "Banani, Dhaka",
+    "price_per_hour": 2000,
+    "capacity": 22,
+    "available_slots": ["06:00-07:00", "11:00-12:00", "17:00-18:00", "20:00-21:00"],
+    "description": "Premier Football Arena is Dhaka's top-rated FIFA-standard artificial turf football ground, situated in the prime location of Banani. The ground features high-quality synthetic grass, professional floodlights for evening games, a digital scoreboard, spectator seating for 100 guests, and clean locker rooms. It is the ideal venue for competitive league matches, corporate tournaments, and friendly games. Our dedicated staff manages bookings efficiently, and first-aid support is always on standby during matches.",
+    "image": "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800&auto=format&fit=crop",
+    "owner_email": "premier.football@gmail.com",
+    "booking_count": 210
+  },
+  {
+    "name": "Kick Off Football Zone",
+    "facility_type": "Football",
+    "location": "Dhanmondi, Dhaka",
+    "price_per_hour": 1800,
+    "capacity": 14,
+    "available_slots": ["08:00-09:00", "13:00-14:00", "19:00-20:00"],
+    "description": "Kick Off Football Zone in Dhanmondi is a premium 5-a-side and 7-a-side football facility built for fast-paced urban football culture. The high-quality turf surface ensures consistent ball movement and player safety. The venue includes an indoor changing area, referee service on request, a refreshment zone with energy drinks and snacks, and a viewing gallery for spectators. Perfect for friend groups, office teams, and youth academies looking for a reliable venue in a central location.",
+    "image": "https://images.unsplash.com/photo-1487466365202-1afdb86c764e?w=800&auto=format&fit=crop",
+    "owner_email": "kickoff.zone@gmail.com",
+    "booking_count": 175
+  },
+  {
+    "name": "Smash Point Badminton Club",
+    "facility_type": "Badminton",
+    "location": "Gulshan, Dhaka",
+    "price_per_hour": 600,
+    "capacity": 4,
+    "available_slots": ["07:00-08:00", "10:00-11:00", "14:00-15:00", "18:00-19:00", "20:00-21:00"],
+    "description": "Smash Point Badminton Club is Gulshan's most popular indoor badminton destination, featuring 4 professional courts with premium wooden flooring, high-quality lighting designed to eliminate shadows, and full air conditioning for year-round comfort. The club offers racket and shuttlecock rentals, professional coaching sessions for beginners and intermediates, and a lounge area for relaxation between games. Whether you are a casual player or a competitive athlete, Smash Point provides a world-class environment to elevate your game.",
+    "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&auto=format&fit=crop",
+    "owner_email": "smashpoint.badminton@gmail.com",
+    "booking_count": 320
+  },
+  {
+    "name": "Rally Badminton Center",
+    "facility_type": "Badminton",
+    "location": "Mohammadpur, Dhaka",
+    "price_per_hour": 500,
+    "capacity": 4,
+    "available_slots": ["09:00-10:00", "12:00-13:00", "16:00-17:00", "21:00-22:00"],
+    "description": "Rally Badminton Center in Mohammadpur offers an affordable yet high-quality badminton experience for players of all ages. The center has 3 well-maintained courts with proper net tension, anti-slip flooring, and adequate ventilation. Locker facilities and shower rooms are available for members. We run weekend coaching programs for children and adults, and our monthly membership packages provide great value for regular players. A friendly and welcoming environment makes Rally the go-to spot for badminton lovers in the area.",
+    "image": "https://images.unsplash.com/photo-1599586120429-48281b6f0ece?w=800&auto=format&fit=crop",
+    "owner_email": "rally.center@gmail.com",
+    "booking_count": 255
+  },
+  {
+    "name": "Ace Tennis Club",
+    "facility_type": "Tennis",
+    "location": "Baridhara, Dhaka",
+    "price_per_hour": 1000,
+    "capacity": 4,
+    "available_slots": ["06:00-07:00", "09:00-10:00", "15:00-16:00", "18:00-19:00"],
+    "description": "Ace Tennis Club in Baridhara is a prestigious tennis facility offering 2 international-standard hard courts with premium surface coating for optimal ball bounce. The club is equipped with professional net systems, full perimeter lighting for evening play, and a fully stocked pro shop. Certified coaches are available for private and group lessons catering to all levels from beginners to advanced players. Members enjoy access to a comfortable lounge, filtered water stations, and secure storage for tennis equipment.",
+    "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&auto=format&fit=crop",
+    "owner_email": "ace.tennis@gmail.com",
+    "booking_count": 89
+  },
+  {
+    "name": "Grand Slam Tennis Arena",
+    "facility_type": "Tennis",
+    "location": "Bashundhara, Dhaka",
+    "price_per_hour": 1200,
+    "capacity": 4,
+    "available_slots": ["07:00-08:00", "11:00-12:00", "16:00-17:00", "20:00-21:00"],
+    "description": "Grand Slam Tennis Arena in Bashundhara is built for players who take their game seriously. The arena features 3 synthetic clay courts that replicate the feel of international tournament surfaces, a ball machine rental service, and advanced video analysis coaching that helps players identify and improve their technique. The on-site pro shop stocks premium rackets, strings, shoes, and accessories. Weekend tournaments are organized monthly, giving members a competitive platform to test their skills in a professional setting.",
+    "image": "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?w=800&auto=format&fit=crop",
+    "owner_email": "grandslam.arena@gmail.com",
+    "booking_count": 112
+  },
+  {
+    "name": "Match Point Tennis Court",
+    "facility_type": "Tennis",
+    "location": "Khilgaon, Dhaka",
+    "price_per_hour": 800,
+    "capacity": 4,
+    "available_slots": ["08:00-09:00", "13:00-14:00", "17:00-18:00"],
+    "description": "Match Point Tennis Court in Khilgaon is the most family-friendly and budget-conscious tennis venue in Dhaka. With 2 well-maintained all-weather courts, this facility is ideal for casual players, families, and young learners. Weekend coaching programs for kids aged 6 to 16 are conducted by experienced trainers in a fun and encouraging environment. The venue also hosts inter-school tennis competitions and community events, making it a hub for grassroots tennis development in the Khilgaon area.",
+    "image": "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=800&auto=format&fit=crop",
+    "owner_email": "matchpoint.court@gmail.com",
+    "booking_count": 67
+  }
+]
