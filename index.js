@@ -22,7 +22,7 @@ async function run() {
     await client.connect();
     const database = client.db("ArenaPulse");
     const facilityCollection = database.collection("facilities");
-    // const bookingCollection = database.collection("bookings");
+    const bookingCollection = database.collection("myBookings");
 
     //get
     app.get('/facilities', async (req, res) => {
@@ -76,8 +76,32 @@ async function run() {
       res.json(result)
     })
 
+    //booking
+    app.post("/myBookings", async (req, res) => {
+      const bookingData = req.body;
+      // console.log(bookingData)
+      const result = await bookingCollection.insertOne(bookingData)
+      res.json(result)
+    })
 
+    //  app.get("/myBookings/:userId", verifyToken, async (req, res) => {
+    //   console.log(req.params)
+    //   const { userId } = req.params;
+    //   const result = await bookingCollection.find({ userId: userId }).toArray()
+    //   // const result = await bookingCollection.find({userId}).toArray()  //same resulit dibe
+    //   res.json(result)
+    // })
     
+
+
+
+
+
+
+
+
+
+
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   }
