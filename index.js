@@ -49,13 +49,22 @@ async function run() {
 
     //get by email
     app.get("/facilities/:id", async (req, res) => {
-    const param = req.params.id;
-    if (param.includes('@')) {
+      const param = req.params.id;
+      if (param.includes('@')) {
         const email = param;
-        const result = await facilityCollection.find({owner_email: email}).toArray(); 
+        const result = await facilityCollection.find({ owner_email: email }).toArray();
         console.log("Fetched by email:", result);
         return res.json(result);
-    }})
+      }
+    })
+
+    //delete
+    app.delete("/facilities/:id", async (req, res) => {
+      const id = req.params.id
+      const idBSON = { _id: new ObjectId(id) }
+      const result = await facilityCollection.deleteOne(idBSON)
+      res.json(result)
+    })
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
