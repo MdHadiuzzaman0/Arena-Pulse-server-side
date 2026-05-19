@@ -48,14 +48,10 @@ async function run() {
     })
 
     //get by email
-    app.get("/facilities/:id", async (req, res) => {
-      const param = req.params.id;
-      if (param.includes('@')) {
-        const email = param;
-        const result = await facilityCollection.find({ owner_email: email }).toArray();
-        console.log("Fetched by email:", result);
-        return res.json(result);
-      }
+    app.get("/facilitiesByEmail/:email", async (req, res) => {
+      const email = req.params.email;
+      const result = await facilityCollection.find({ owner_email: email }).toArray();
+      res.json(result)
     })
 
     //delete
@@ -66,6 +62,22 @@ async function run() {
       res.json(result)
     })
 
+    //update
+    app.patch('/facilities/:id', async (req, res) => {
+      const getId = req.params.id
+      const findId = { _id: new ObjectId(getId) }
+      const data = req.body;
+
+      const gotModifiedData = {
+        $set: data
+      };
+      // console.log(modifiedData)
+      const result = await facilityCollection.updateOne(findId, gotModifiedData)
+      res.json(result)
+    })
+
+
+    
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   }
