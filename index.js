@@ -47,7 +47,7 @@ async function run() {
       res.json(result)
     })
 
-    //get by email
+    //get my facilities by email
     app.get("/facilitiesByEmail/:email", async (req, res) => {
       const email = req.params.email;
       const result = await facilityCollection.find({ owner_email: email }).toArray();
@@ -84,13 +84,21 @@ async function run() {
       res.json(result)
     })
 
-    //  app.get("/myBookings/:userId", verifyToken, async (req, res) => {
-    //   console.log(req.params)
-    //   const { userId } = req.params;
-    //   const result = await bookingCollection.find({ userId: userId }).toArray()
-    //   // const result = await bookingCollection.find({userId}).toArray()  //same resulit dibe
-    //   res.json(result)
-    // })
+    //get bookingData by userEemail
+    app.get("/myBookingsByEmail/:email", async (req, res) => {
+      const email = req.params.email;
+      const result = await bookingCollection.find({ user_email: email }).toArray();
+      res.json(result)
+    })
+
+    //delete
+    app.delete("/myBookings/:id", async (req, res) => {
+      const bookingId = req.params.id
+      const idBSON = { _id: new ObjectId(bookingId) }
+      const result = await bookingCollection.deleteOne(idBSON)
+      res.json(result)
+    })
+    
     
 
 
