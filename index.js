@@ -91,15 +91,29 @@ async function run() {
       res.json(result)
     })
 
-    //delete
+    //delete bookingData
     app.delete("/myBookings/:id", async (req, res) => {
       const bookingId = req.params.id
       const idBSON = { _id: new ObjectId(bookingId) }
       const result = await bookingCollection.deleteOne(idBSON)
       res.json(result)
     })
-    
-    
+
+    //filter 
+    app.post("/facilities/filter", async (req, res) => {
+      const sportsArray = req.body;
+      if (sportsArray.length === 0) {
+        const allFacilities = await facilityCollection.find().toArray();
+        return res.json(allFacilities);
+      }
+      const query = {
+        facility_type: { $in: sportsArray }
+      };
+      const filteredResult = await facilityCollection.find(query).toArray();
+      res.json(filteredResult);
+    });
+
+
 
 
 
