@@ -30,6 +30,23 @@ async function run() {
       res.json(result)
     })
 
+    //search
+    app.get('/facilities/search', async (req, res) =>{
+      const {searchedValue} = req.query
+      if(searchedValue.trim() === " "){
+        const allFacilities = await facilityCollection.find().toArray();
+        return res.json(allFacilities);
+      }
+      const query = { 
+        $and: searchedValue?.trim().split(" ").map(q => ({
+        name: { $regex: q, $options: "i" }
+        }))
+      }
+
+       const result = await facilityCollection.find(query).toArray();
+       res.json(result);
+    })
+ 
     //get by id
     app.get("/facilities/:id", async (req, res) => {
       const id = req.params.id;
@@ -113,6 +130,7 @@ async function run() {
       res.json(filteredResult);
     });
 
+    
 
 
 
