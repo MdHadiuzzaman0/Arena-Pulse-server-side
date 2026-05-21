@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { createRemoteJWKSet, jwtVerify } = require('jose-cjs');
 const uri = process.env.MONGODB_URI;
 const port = process.env.DATABASE_URL
 
@@ -17,12 +18,37 @@ const client = new MongoClient(uri, {
   }
 });
 
+const JWKS = createRemoteJWKSet(
+      new URL('http://localhost:3000/api/auth/jwks')
+    )
+
+const verifyToken = async (req, res, next) => {
+  const authHeader = req?.headers.authorization
+  if(!authHeader){
+    return res.status(401).json({message: "Unauthorized"})
+  }
+  const token = authHeader?.split(" ")[1]
+  if(!token){
+     return res.status(401).json({message: "Unauthorized"})  
+  }
+  console.log(authHeader, token) 
+  try{
+    const { payload } = await jwtVerify(token, JWKS)
+    console.log(payload)
+    next()
+  } 
+  catch (error) {
+    return res.status(403).json({message: "Forbidden"})
+  }
+}
+
 async function run() {
   try {
     await client.connect();
     const database = client.db("ArenaPulse");
     const facilityCollection = database.collection("facilities");
     const bookingCollection = database.collection("myBookings");
+
 
     //get
     app.get('/facilities', async (req, res) => {
@@ -48,7 +74,7 @@ async function run() {
     })
  
     //get by id
-    app.get("/facilities/:id", async (req, res) => {
+    app.get("/facilities/:id", verifyToken, async (req, res) => {
       const id = req.params.id;
       const idBSON = { _id: new ObjectId(id) }
       const result = await facilityCollection.findOne(idBSON)
@@ -57,7 +83,7 @@ async function run() {
     })
 
     //post
-    app.post("/facilities", async (req, res) => {
+    app.post("/facilities", verifyToken, async (req, res) => {
       const newFacility = req.body;
       const result = await facilityCollection.insertOne(newFacility)
       // console.log(result)
@@ -65,14 +91,14 @@ async function run() {
     })
 
     //get my facilities by email
-    app.get("/facilitiesByEmail/:email", async (req, res) => {
+    app.get("/facilitiesByEmail/:email", verifyToken, async (req, res) => {
       const email = req.params.email;
       const result = await facilityCollection.find({ owner_email: email }).toArray();
       res.json(result)
     })
 
     //delete
-    app.delete("/facilities/:id", async (req, res) => {
+    app.delete("/facilities/:id", verifyToken, async (req, res) => {
       const id = req.params.id
       const idBSON = { _id: new ObjectId(id) }
       const result = await facilityCollection.deleteOne(idBSON)
@@ -80,7 +106,7 @@ async function run() {
     })
 
     //update
-    app.patch('/facilities/:id', async (req, res) => {
+    app.patch('/facilities/:id', verifyToken, async (req, res) => {
       const getId = req.params.id
       const findId = { _id: new ObjectId(getId) }
       const data = req.body;
@@ -94,7 +120,7 @@ async function run() {
     })
 
     //booking
-    app.post("/myBookings", async (req, res) => {
+    app.post("/myBookings", verifyToken, async (req, res) => {
       const bookingData = req.body;
       // console.log(bookingData)
       const result = await bookingCollection.insertOne(bookingData)
@@ -102,14 +128,14 @@ async function run() {
     })
 
     //get bookingData by userEemail
-    app.get("/myBookingsByEmail/:email", async (req, res) => {
+    app.get("/myBookingsByEmail/:email", verifyToken, async (req, res) => {
       const email = req.params.email;
       const result = await bookingCollection.find({ user_email: email }).toArray();
       res.json(result)
     })
 
     //delete bookingData
-    app.delete("/myBookings/:id", async (req, res) => {
+    app.delete("/myBookings/:id", verifyToken, async (req, res) => {
       const bookingId = req.params.id
       const idBSON = { _id: new ObjectId(bookingId) }
       const result = await bookingCollection.deleteOne(idBSON)
